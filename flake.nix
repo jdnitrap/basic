@@ -8,7 +8,7 @@
   outputs = { self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      hosts = [ "Asus" ];
+      hosts = [ "Asus" "minilap" ];
     in {
       nixosConfigurations = nixpkgs.lib.genAttrs hosts (hostName:
         nixpkgs.lib.nixosSystem {
