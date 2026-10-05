@@ -22,6 +22,7 @@ imports =
 	./networking.nix
 	./user-accounts.nix
 	./flatpak.nix
+	./bluetooth.nix
 
     ];
 
