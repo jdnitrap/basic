@@ -25,4 +25,6 @@
     layout = "us";
     variant = "";
   };
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
