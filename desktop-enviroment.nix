@@ -16,24 +16,21 @@
     gnome-user-docs
   ];
 
-  # The Extensions launcher is inside gnome-shell, so it cannot be uninstalled.
-  # A higher-priority desktop file hides the icon.
-  environment.systemPackages = [
-    (lib.hiPrio (pkgs.runCommand "hide-gnome-extensions-app" { } ''
-      install -Dm644 /dev/stdin $out/share/applications/org.gnome.Shell.Extensions.desktop <<EOF
-      [Desktop Entry]
-      Type=Application
-      Name=Extensions
-      NoDisplay=true
-      Hidden=true
-      EOF
-      install -Dm644 /dev/stdin $out/share/applications/org.gnome.Extensions.desktop <<EOF
-      [Desktop Entry]
-      Type=Application
-      Name=Extensions
-      NoDisplay=true
-      Hidden=true
-      EOF
-    ''))
-  ];
+  # Extensions is built into gnome-shell. A user desktop file overrides its icon.
+  system.activationScripts.hideGnomeExtensions.text = ''
+    for home in /home/*; do
+      [ -d "$home" ] || continue
+      dir="$home/.local/share/applications"
+      mkdir -p "$dir"
+      cat > "$dir/org.gnome.Shell.Extensions.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=Extensions
+NoDisplay=true
+Hidden=true
+EOF
+      chown --reference="$home" "$dir/org.gnome.Shell.Extensions.desktop"
+      chown --reference="$home" "$dir"
+    done
+  '';
 }
