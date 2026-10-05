@@ -7,7 +7,7 @@
 users.users."nimda" = {
     isNormalUser = true;
     description = "nimda";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "lp" "scanner" ];
     packages = with pkgs; [
     #  thunderbird
     ];

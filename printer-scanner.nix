@@ -16,16 +16,12 @@
 };
 
 services.printing.drivers = with pkgs; [
-
-	
 	gutenprint
 	gutenprintBin
-	cups-printers
 	epson-escpr2
 	epson-escpr
-	
 	];
-	
+
 hardware.sane.enable = true; # enables support for SANE scanners
   services.ipp-usb.enable = true;
 
