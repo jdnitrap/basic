@@ -12,7 +12,6 @@ imports =
     [
 
 	./hardware-support.nix
-	./printer-scanner.nix
 	./system-setup.nix
 	./sound.nix
 	./state-version.nix
@@ -22,7 +21,6 @@ imports =
 	./networking.nix
 	./user-accounts.nix
 	./flatpak.nix
-	./bluetooth.nix
 	./auto-update.nix
 	./experimental-features.nix
 	./laptop.nix
