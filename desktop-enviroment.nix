@@ -21,6 +21,7 @@ Hidden=true
 in
 {
   services.xserver.enable = true;
+  services.xserver.excludePackages = [ pkgs.xterm ];
   services.displayManager.gdm.enable = true;
   services.desktopManager.gnome.enable = true;
 
