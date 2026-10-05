@@ -3,18 +3,20 @@
 { config, pkgs, lib, ... }:
 
 let
+  # Must not be indented. A desktop file with leading spaces is ignored.
   hiddenDesktop = name: pkgs.writeText name ''
-    [Desktop Entry]
-    Type=Application
-    Name=Extensions
-    NoDisplay=true
-    Hidden=true
-  '';
+[Desktop Entry]
+Type=Application
+Name=Extensions
+Icon=org.gnome.Shell.Extensions
+Exec=false
+OnlyShowIn=GNOME;
+NoDisplay=true
+Hidden=true
+'';
   hideExtensions = lib.hiPrio (pkgs.runCommand "hide-gnome-extensions-app" { } ''
-    install -Dm644 ${hiddenDesktop "org.gnome.Shell.Extensions.desktop"} \
-      $out/share/applications/org.gnome.Shell.Extensions.desktop
-    install -Dm644 ${hiddenDesktop "org.gnome.Extensions.desktop"} \
-      $out/share/applications/org.gnome.Extensions.desktop
+    install -Dm644 ${hiddenDesktop "shell"} $out/share/applications/org.gnome.Shell.Extensions.desktop
+    install -Dm644 ${hiddenDesktop "app"} $out/share/applications/org.gnome.Extensions.desktop
   '');
 in
 {
@@ -39,9 +41,9 @@ in
       [ -d "$home" ] || continue
       dir="$home/.local/share/applications"
       mkdir -p "$dir"
-      cp -f ${hiddenDesktop "org.gnome.Shell.Extensions.desktop"} "$dir/org.gnome.Shell.Extensions.desktop"
-      cp -f ${hiddenDesktop "org.gnome.Extensions.desktop"} "$dir/org.gnome.Extensions.desktop"
-      chown --reference="$home" "$dir" "$dir"/*.desktop
+      cp -f ${hiddenDesktop "shell"} "$dir/org.gnome.Shell.Extensions.desktop"
+      cp -f ${hiddenDesktop "app"} "$dir/org.gnome.Extensions.desktop"
+      chown --reference="$home" "$dir" "$dir/org.gnome.Shell.Extensions.desktop" "$dir/org.gnome.Extensions.desktop"
     done
   '';
 }
