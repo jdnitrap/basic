@@ -23,6 +23,7 @@ imports =
 	./user-accounts.nix
 	./flatpak.nix
 	./bluetooth.nix
+	./auto-update.nix
 
     ];
 
