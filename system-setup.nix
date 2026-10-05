@@ -25,4 +25,6 @@
     layout = "us";
     variant = "";
   };
+
+  documentation.nixos.enable = false;
 }
