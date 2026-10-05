@@ -26,6 +26,7 @@ imports =
 	./auto-update.nix
 	./experimental-features.nix
 	./laptop.nix
+	./apparmor.nix
 
     ];
 
