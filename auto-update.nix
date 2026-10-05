@@ -18,18 +18,20 @@
   };
 
   systemd.services.nixos-upgrade = {
-    path = [ pkgs.libnotify pkgs.sudo ];
+    path = [ pkgs.libnotify pkgs.sudo pkgs.coreutils ];
     serviceConfig = {
       Nice = 19;
       IOSchedulingClass = "idle";
       CPUSchedulingPolicy = "idle";
     };
     postStart = ''
-      uid=$(id -u nimda 2>/dev/null || true)
-      if [ -n "$uid" ] && [ -S "/run/user/$uid/bus" ]; then
-        sudo -u nimda DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
+      for uid in $(ls /run/user 2>/dev/null || true); do
+        [ -S "/run/user/$uid/bus" ] || continue
+        user=$(id -nu "$uid" 2>/dev/null || true)
+        [ -n "$user" ] || continue
+        sudo -u "$user" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
           notify-send "NixOS update" "The 3 PM system update finished." || true
-      fi
+      done
     '';
   };
 }
