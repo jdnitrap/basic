@@ -9,9 +9,8 @@
 ##############
 
 imports =
-    [ # Include the results of the hardware scan.
+    [
 
-	./hardware-configuration.nix
 	./hardware-support.nix
 	./printer-scanner.nix
 	./system-setup.nix

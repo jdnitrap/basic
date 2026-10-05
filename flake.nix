@@ -1,18 +1,22 @@
 {
-  description = "NixOS configuration (flake conversion of configuration.nix)";
+  description = "NixOS configurations by hostname";
 
   inputs = {
-    # Matches system.stateVersion = "26.05" in state-version.nix.
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
   };
 
-  outputs = { self, nixpkgs, ... }: {
-    nixosConfigurations.hostnamehere = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, ... }:
+    let
       system = "x86_64-linux";
-      modules = [
-        # configuration.nix already imports ./hardware-configuration.nix
-        ./configuration.nix
-      ];
+      hosts = [ "hostnamehere" ];
+    in {
+      nixosConfigurations = nixpkgs.lib.genAttrs hosts (hostName:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            ./hosts/${hostName}.nix
+          ];
+        });
     };
-  };
 }
