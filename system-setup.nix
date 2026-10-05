@@ -25,7 +25,4 @@
     layout = "us";
     variant = "";
   };
-
-  # ADDED FOR FLAKE CONVERSION: enable the flakes CLI.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
