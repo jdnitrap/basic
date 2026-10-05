@@ -2,6 +2,21 @@
 
 { config, pkgs, lib, ... }:
 
+let
+  hiddenDesktop = name: pkgs.writeText name ''
+    [Desktop Entry]
+    Type=Application
+    Name=Extensions
+    NoDisplay=true
+    Hidden=true
+  '';
+  hideExtensions = lib.hiPrio (pkgs.runCommand "hide-gnome-extensions-app" { } ''
+    install -Dm644 ${hiddenDesktop "org.gnome.Shell.Extensions.desktop"} \
+      $out/share/applications/org.gnome.Shell.Extensions.desktop
+    install -Dm644 ${hiddenDesktop "org.gnome.Extensions.desktop"} \
+      $out/share/applications/org.gnome.Extensions.desktop
+  '');
+in
 {
   services.xserver.enable = true;
   services.displayManager.gdm.enable = true;
@@ -14,23 +29,19 @@
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome-user-docs
+    gnome-shell-extensions
   ];
 
-  # Extensions is built into gnome-shell. A user desktop file overrides its icon.
+  environment.systemPackages = [ hideExtensions ];
+
   system.activationScripts.hideGnomeExtensions.text = ''
     for home in /home/*; do
       [ -d "$home" ] || continue
       dir="$home/.local/share/applications"
       mkdir -p "$dir"
-      cat > "$dir/org.gnome.Shell.Extensions.desktop" <<EOF
-[Desktop Entry]
-Type=Application
-Name=Extensions
-NoDisplay=true
-Hidden=true
-EOF
-      chown --reference="$home" "$dir/org.gnome.Shell.Extensions.desktop"
-      chown --reference="$home" "$dir"
+      cp -f ${hiddenDesktop "org.gnome.Shell.Extensions.desktop"} "$dir/org.gnome.Shell.Extensions.desktop"
+      cp -f ${hiddenDesktop "org.gnome.Extensions.desktop"} "$dir/org.gnome.Extensions.desktop"
+      chown --reference="$home" "$dir" "$dir"/*.desktop
     done
   '';
 }
