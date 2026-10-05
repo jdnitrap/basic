@@ -1,0 +1,31 @@
+#configuration.nix
+
+{conifg, pkgs, lib, inputs, ...}:
+
+{
+
+##############  
+#Module Setup#
+##############
+
+imports =
+    [ # Include the results of the hardware scan.
+
+	./hardware-configuration.nix
+	./printer-scanner.nix
+	./system-setup.nix
+	./sound.nix
+	./state-version.nix
+	./system-packages.nix
+	./desktop-enviroment.nix
+	./boot.nix
+	./networking.nix
+	./user-accounts.nix
+	./flatpak.nix
+
+    ];
+
+
+
+
+}
