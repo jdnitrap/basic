@@ -5,7 +5,7 @@
 {
   services.flatpak.enable = true;
 
-  # User install only. Do not add a system-wide Flathub remote.
+  # Per-user Flathub for normal installs.
   systemd.user.services.flatpak-repo = {
     wantedBy = [ "default.target" ];
     wants = [ "network-online.target" ];
@@ -17,20 +17,23 @@
     '';
   };
 
-  systemd.services.flatpak-no-system-remote = {
+  # System Flathub exists, but only an admin may install into it.
+  systemd.services.flatpak-system-repo = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" ];
     path = [ pkgs.flatpak ];
     serviceConfig.Type = "oneshot";
     script = ''
-      flatpak remote-delete --system flathub || true
+      flatpak remote-add --if-not-exists --system flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     '';
   };
 
-  # Block polkit prompts that would install or change system-wide Flatpaks.
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (action.id.indexOf("org.freedesktop.Flatpak.") == 0) {
+        if (subject.isInGroup("wheel")) {
+          return polkit.Result.AUTH_ADMIN;
+        }
         return polkit.Result.NO;
       }
     });
