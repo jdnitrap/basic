@@ -24,6 +24,7 @@ imports =
 	./flatpak.nix
 	./bluetooth.nix
 	./auto-update.nix
+	./experimental-features.nix
 
     ];
 
