@@ -25,6 +25,7 @@ imports =
 	./bluetooth.nix
 	./auto-update.nix
 	./experimental-features.nix
+	./laptop.nix
 
     ];
 
