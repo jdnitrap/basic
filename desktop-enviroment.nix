@@ -14,7 +14,6 @@
   environment.gnome.excludePackages = with pkgs; [
     gnome-tour
     gnome-user-docs
-    gnome-extensions-app
   ];
 
   # The Extensions launcher is inside gnome-shell, so it cannot be uninstalled.
