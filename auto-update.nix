@@ -17,6 +17,12 @@
     ];
   };
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
   systemd.services.nixos-upgrade = {
     path = [ pkgs.libnotify pkgs.sudo pkgs.coreutils ];
     serviceConfig = {
