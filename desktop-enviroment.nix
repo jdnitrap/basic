@@ -48,6 +48,9 @@ in
     };
   };
 
+  # Terminal=true desktop files and GLib terminal launches use this instead of Console.
+  xdg.terminal-exec.enable = true;
+
   environment.systemPackages = [ hideExtensions ];
 
   system.activationScripts.hideGnomeExtensions.text = ''
