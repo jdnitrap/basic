@@ -5,7 +5,8 @@
 {
   services.flatpak.enable = true;
 
-  # Per-user Flathub for normal installs.
+  # User Flathub only. A system remote makes GNOME Software retry updates
+  # and loop on the admin password prompt.
   systemd.user.services.flatpak-repo = {
     wantedBy = [ "default.target" ];
     wants = [ "network-online.target" ];
@@ -17,17 +18,16 @@
     '';
   };
 
-  # System Flathub exists, but only an admin may install into it.
-  systemd.services.flatpak-system-repo = {
+  systemd.services.flatpak-remove-system-remote = {
     wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" ];
     path = [ pkgs.flatpak ];
     serviceConfig.Type = "oneshot";
     script = ''
-      flatpak remote-add --if-not-exists --system flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+      flatpak remote-delete --system flathub || true
     '';
   };
 
+  # A system install still needs an admin if a system remote is added later.
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (action.id.indexOf("org.freedesktop.Flatpak.") == 0) {
