@@ -35,6 +35,19 @@ in
     gnome-shell-extensions
   ];
 
+  # Trash, mounts, and network locations for any file manager.
+  services.gvfs.enable = true;
+
+  # FileChooser portal does not require Nautilus. GTK backend works with other managers.
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.gnome = {
+      default = [ "gnome" "gtk" ];
+      "org.freedesktop.impl.portal.FileChooser" = "gtk";
+    };
+  };
+
   environment.systemPackages = [ hideExtensions ];
 
   system.activationScripts.hideGnomeExtensions.text = ''
