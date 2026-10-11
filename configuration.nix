@@ -12,6 +12,7 @@ imports =
     [
 
 	./hardware-support.nix
+	./printer-scanner.nix
 	./system-setup.nix
 	./sound.nix
 	./state-version.nix
