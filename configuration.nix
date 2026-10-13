@@ -26,6 +26,7 @@ imports =
 	./experimental-features.nix
 	./laptop.nix
 	./apparmor.nix
+	./auto-login.nix
 
     ];
 
