@@ -10,10 +10,10 @@
   # Do not set services.displayManager.autoLogin. That would lock the switch.
   # GDM then follows AccountsService, which the Users panel writes.
 
+  # Any logged-in local user may toggle automatic login.
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (action.id == "org.freedesktop.accounts.user-administration" &&
-          subject.isInGroup("wheel") &&
           subject.active && subject.local) {
         return polkit.Result.YES;
       }
