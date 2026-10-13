@@ -1,5 +1,6 @@
 #auto-login.nix
-# Auto-login is not set here. Settings -> System -> Users owns the switch.
+# GNOME only enables Automatic Login for administrator accounts.
+# On NixOS that means the wheel group.
 
 { config, pkgs, lib, ... }:
 
@@ -8,9 +9,7 @@
   users.mutableUsers = true;
 
   # Do not set services.displayManager.autoLogin. That would lock the switch.
-  # GDM then follows AccountsService, which the Users panel writes.
 
-  # Any logged-in local user may toggle automatic login.
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (action.id == "org.freedesktop.accounts.user-administration" &&
@@ -18,5 +17,13 @@
         return polkit.Result.YES;
       }
     });
+  '';
+
+  # GNOME hides the switch on standard accounts. Put local users in wheel.
+  system.activationScripts.localUsersAreAdmins.text = ''
+    ${pkgs.shadow}/bin/getent passwd | ${pkgs.gawk}/bin/awk -F: '$3 >= 1000 && $3 < 65534 { print $1 }' |
+      while read -r user; do
+        ${pkgs.shadow}/bin/usermod -aG wheel "$user" || true
+      done
   '';
 }
