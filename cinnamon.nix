@@ -6,7 +6,7 @@
   services.xserver.enable = true;
   services.xserver.excludePackages = [ pkgs.xterm ];
   # GDM from gnome.nix is the login screen. It can start Cinnamon too.
-  services.desktopManager.cinnamon.enable = true;
+  services.xserver.desktopManager.cinnamon.enable = true;
 
   services.gvfs.enable = true;
 
