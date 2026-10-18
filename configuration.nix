@@ -18,7 +18,7 @@ imports =
 	./sound.nix
 	./state-version.nix
 	./system-packages.nix
-	./desktop-enviroment.nix
+	./gnome.nix
 	./boot.nix
 	./networking.nix
 	./user-accounts.nix
