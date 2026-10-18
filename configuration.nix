@@ -1,6 +1,6 @@
 #configuration.nix
 
-{conifg, pkgs, lib, inputs, ...}:
+{ config, pkgs, lib, ... }:
 
 {
 
@@ -12,6 +12,7 @@ imports =
     [
 
 	./hardware-support.nix
+	./hosts/Asus.nix
 	./printer-scanner.nix
 	./system-setup.nix
 	./sound.nix

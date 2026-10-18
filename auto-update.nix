@@ -9,10 +9,8 @@
     dates = "15:00";
     randomizedDelaySec = "0";
     allowReboot = false;
-    flake = "github:jdnitrap/basic#Asus";
     flags = [
-      "--refresh"
-      "--no-write-lock-file"
+      "--upgrade"
       "--option" "build-cores" "1"
       "--option" "cores" "1"
     ];
