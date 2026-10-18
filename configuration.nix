@@ -19,6 +19,7 @@ imports =
 	./state-version.nix
 	./system-packages.nix
 	./gnome.nix
+	./cinnamon.nix
 	./boot.nix
 	./networking.nix
 	./user-accounts.nix
