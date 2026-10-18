@@ -11,8 +11,8 @@
 imports =
     [
 
+	./hardware-configuration.nix
 	./hardware-support.nix
-	./hosts/Asus.nix
 	./printer-scanner.nix
 	./system-setup.nix
 	./sound.nix
@@ -31,7 +31,6 @@ imports =
 
     ];
 
-
-
+  networking.hostName = "Asus";
 
 }
