@@ -34,9 +34,7 @@ imports =
 
   networking.hostName = "Asus";
 
-  # GNOME and Cinnamon both set this. One shared path lets both stay installed.
-  environment.sessionVariables.NIX_GSETTINGS_OVERRIDES_DIR = lib.mkForce (
-    config.environment.etc."xdg/nix-overrides/glib-2.0/schemas".source
-  );
+  # GNOME and Cinnamon both set this. Empty wins so the build can finish.
+  environment.sessionVariables.NIX_GSETTINGS_OVERRIDES_DIR = lib.mkForce "";
 
 }
