@@ -1,4 +1,4 @@
-#networking.nxi
+#networking.nix
 
 {config, pkgs, lib, ...}:
 
@@ -16,15 +16,12 @@
     networkmanager-openvpn
   ];
 
- # Enable the OpenSSH daemon.
-   services.openssh.enable = false;
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = false;
 
-# Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-   networking.firewall.enable = true;
-   # Required for Proton VPN and other WireGuard clients.
-   networking.firewall.checkReversePath = false;
+  # NixOS firewall.
+  networking.firewall.enable = true;
+  # Required for Proton VPN and other WireGuard clients.
+  networking.firewall.checkReversePath = false;
 
 }

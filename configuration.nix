@@ -19,7 +19,6 @@ imports =
 	./state-version.nix
 	./system-packages.nix
 	./gnome.nix
-	./cinnamon.nix
 	./boot.nix
 	./networking.nix
 	./user-accounts.nix
@@ -29,12 +28,10 @@ imports =
 	./laptop.nix
 	./apparmor.nix
 	./auto-login.nix
+	./adguard.nix
 
     ];
 
   networking.hostName = "Asus";
-
-  # GNOME and Cinnamon both set this. Empty wins so the build can finish.
-  environment.sessionVariables.NIX_GSETTINGS_OVERRIDES_DIR = lib.mkForce "";
 
 }
