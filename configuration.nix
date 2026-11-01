@@ -215,7 +215,6 @@
     kdePackages.kcachegrind
     kdePackages.kcron
     kdePackages.kdf
-    kdePackages.keepsecret
     kdePackages.francis
     kdePackages.kbackup
     kdePackages.kalarm
@@ -241,8 +240,6 @@
     kdePackages.drkonqi
     kdePackages.plasma-welcome
     kdePackages.glaxnimate
-    kdePackages.marknote
-    kdePackages.klevernotes
     kdePackages.plasma-pass
     kdePackages.kio-fuse
     kdePackages.phonon-vlc
