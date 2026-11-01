@@ -20,6 +20,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 5;
+  boot.kernelParams = [
+    "slab_nomerge"
+    "page_poison=1"
+    "page_alloc.shuffle=1"
+  ];
 
   # Locale and time
   i18n.defaultLocale = "en_US.UTF-8";
@@ -386,6 +391,8 @@
   security.lockKernelModules = true;
   security.protectKernelImage = true;
   security.forcePageTableIsolation = true;
+  security.hideProcessInformation = true;
+  systemd.coredump.enable = false;
 
   # State version
   system.stateVersion = "26.05";
