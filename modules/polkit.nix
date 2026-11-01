@@ -4,8 +4,9 @@
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (action.id.indexOf("org.freedesktop.Flatpak.") == 0) {
-        if (action.id == "org.freedesktop.Flatpak.app-update" ||
-            action.id == "org.freedesktop.Flatpak.runtime-update") {
+        if ((action.id == "org.freedesktop.Flatpak.app-update" ||
+             action.id == "org.freedesktop.Flatpak.runtime-update") &&
+            subject.active && subject.local && subject.isInGroup("wheel")) {
           return polkit.Result.YES;
         }
         if (subject.isInGroup("wheel")) {

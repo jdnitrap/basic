@@ -17,11 +17,11 @@
 
   systemd.user.services.flatpak-user-update = {
     description = "Update user Flatpaks";
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
+    after = [ "network-online.target" "flatpak-user-repo.service" ];
+    wants = [ "network-online.target" "flatpak-user-repo.service" ];
     path = [ pkgs.flatpak ];
     serviceConfig.Type = "oneshot";
-    script = "flatpak update --user --noninteractive --assumeyes || true";
+    script = "flatpak update --user --noninteractive --assumeyes";
   };
   systemd.user.timers.flatpak-user-update = {
     wantedBy = [ "timers.target" ];

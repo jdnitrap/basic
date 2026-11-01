@@ -14,6 +14,7 @@
     ollama
     llama-cpp
     python3
+    obsidian
 
     # Browsers
     firefox
@@ -70,7 +71,6 @@
     kdePackages.kfind
     kdePackages.isoimagewriter
     kdePackages.falkon
-    kdePackages.kdeconnect-kde
     kdePackages.k3b
     kdePackages.juk
     kdePackages.dragon

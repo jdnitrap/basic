@@ -8,8 +8,26 @@
   services.openssh.enable = false;
 
   networking.nftables.enable = true;
-  networking.firewall.enable = false;
-  services.opensnitch.enable = true;
+  networking.firewall.enable = true;
+  programs.kdeconnect.enable = true;
+  services.opensnitch = {
+    enable = true;
+    settings = {
+      InterceptUnknown = true;
+      DefaultAction = "deny";
+    };
+  };
+
+  environment.etc."xdg/autostart/opensnitch-ui.desktop".text = ''
+    [Desktop Entry]
+    Type=Application
+    Name=OpenSnitch
+    Comment=Application firewall prompts
+    Exec=${pkgs.opensnitch-ui}/bin/opensnitch-ui
+    Terminal=false
+    Categories=System;Security;
+    X-GNOME-Autostart-enabled=true
+  '';
 
   services.adguardhome = {
     enable = true;
@@ -52,14 +70,14 @@
   networking.nameservers = [ "127.0.0.1" ];
   networking.networkmanager.dns = "none";
 
-  environment.etc."xdg/applications/adguard-home.desktop".text = ''
-    [Desktop Entry]
-    Name=AdGuard Home
-    Comment=Local DNS ad blocker dashboard
-    Exec=xdg-open http://127.0.0.1:3000
-    Icon=preferences-system-network
-    Terminal=false
-    Type=Application
-    Categories=Network;Security;
-  '';
+  environment.systemPackages = [
+    (pkgs.makeDesktopItem {
+      name = "adguard-home";
+      desktopName = "AdGuard Home";
+      comment = "Local DNS ad blocker dashboard";
+      exec = "${pkgs.xdg-utils}/bin/xdg-open http://127.0.0.1:3000";
+      icon = "preferences-system-network";
+      categories = [ "Network" "Security" ];
+    })
+  ];
 }
