@@ -176,6 +176,17 @@
     llama-cpp
     python3
 
+    # Browsers
+    firefox
+    brave
+
+    # Office
+    libreoffice
+
+    # CAD
+    freecad
+    librecad
+
     # KDE / Plasma applications
     kdePackages.dolphin
     kdePackages.dolphin-plugins
@@ -247,6 +258,7 @@
     kdePackages.kget
     kdePackages.sweeper
     kdePackages.skanlite
+    kdePackages.skanpage
     kdePackages.konqueror
     kdePackages.kdenetwork-filesharing
     kdePackages.kwalletmanager
