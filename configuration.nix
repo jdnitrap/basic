@@ -276,8 +276,6 @@
     kdePackages.labplot
     kdePackages.marble
     kdePackages.kphotoalbum
-    kdePackages.digikam
-    kdePackages.krita
   ];
 
   # Flatpak
