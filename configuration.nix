@@ -254,33 +254,6 @@
   # Flatpak
   services.flatpak.enable = true;
 
-  # System Flathub + extra KDE apps
-  systemd.services.flatpak-system-setup = {
-    description = "Add Flathub and install system KDE Flatpaks";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" ];
-    wants = [ "network-online.target" ];
-    path = [ pkgs.flatpak ];
-    serviceConfig.Type = "oneshot";
-    script = ''
-      flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-      flatpak install --system --noninteractive --assumeyes \
-        org.kde.kleopatra \
-        org.kde.kmymoney \
-        org.kde.krename \
-        org.kde.qrca \
-        org.kde.kalzium \
-        org.kde.subtitlecomposer \
-        org.kde.kid3 \
-        org.kde.kstars \
-        org.kde.kweather \
-        org.kde.minuet \
-        org.kde.gcompris \
-        org.kde.crowtranslate \
-        org.kde.kdiskfree || true
-    '';
-  };
-
   systemd.user.services.flatpak-user-repo = {
     description = "Add Flathub remote for user";
     wantedBy = [ "default.target" ];
