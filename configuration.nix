@@ -163,7 +163,30 @@
     gh
     flatpak
     wireguard-tools
+
+    # KDE / Plasma applications
+    kdePackages.dolphin
+    kdePackages.dolphin-plugins
+    kdePackages.kate
+    kdePackages.konsole
+    kdePackages.okular
+    kdePackages.gwenview
+    kdePackages.spectacle
+    kdePackages.ark
+    kdePackages.elisa
+    kdePackages.kcalc
+    kdePackages.filelight
+    kdePackages.partitionmanager
+    kdePackages.kdenlive
+    kdePackages.kmail
+    kdePackages.kontact
+    kdePackages.korganizer
     kdePackages.discover
+    kdePackages.plasma-systemmonitor
+    kdePackages.kinfocenter
+    kdePackages.systemsettings
+    kdePackages.khelpcenter
+    kdePackages.plasma-browser-integration
   ];
 
   # Flatpak (user only)
