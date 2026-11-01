@@ -172,6 +172,9 @@
     flatpak
     wireguard-tools
     steam
+    ollama
+    llama-cpp
+    python3
 
     # KDE / Plasma applications
     kdePackages.dolphin
