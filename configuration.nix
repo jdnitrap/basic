@@ -167,7 +167,7 @@
     flatpak
     wireguard-tools
 
-    # KDE / Plasma applications
+    # KDE / Plasma applications (stable channel)
     kdePackages.dolphin
     kdePackages.dolphin-plugins
     kdePackages.kate
@@ -206,16 +206,12 @@
     kdePackages.dragon
     kdePackages.ghostwriter
     kdePackages.kasts
-    kdePackages.audiotube
-    kdePackages.alligator
-    kdePackages.arianna
     kdePackages.kamoso
     kdePackages.calligra
     kdePackages.kdevelop
     kdePackages.kcachegrind
     kdePackages.kcron
     kdePackages.kdf
-    kdePackages.francis
     kdePackages.kbackup
     kdePackages.kalarm
     kdePackages.kaddressbook
@@ -224,10 +220,7 @@
     kdePackages.kde-dev-utils
     kdePackages.kde-dev-scripts
     kdePackages.kdialog
-    kdePackages.krdp
     kdePackages.plasma-vault
-    kdePackages.plasma-thunderbolt
-    kdePackages.plasma-disks
     kdePackages.print-manager
     kdePackages.kup
     kdePackages.flatpak-kcm
@@ -238,33 +231,21 @@
     kdePackages.ksshaskpass
     kdePackages.kwallet-pam
     kdePackages.drkonqi
-    kdePackages.plasma-welcome
-    kdePackages.glaxnimate
-    kdePackages.plasma-pass
     kdePackages.kio-fuse
     kdePackages.phonon-vlc
-    kdePackages.mpvqt
     kdePackages.kirigami-addons
     kdePackages.kgpg
     kdePackages.kget
     kdePackages.sweeper
     kdePackages.skanlite
     kdePackages.skanpage
-    kdePackages.neochat
-    kdePackages.merkuro
-    kdePackages.tokodon
     kdePackages.kdiff3
     kdePackages.umbrello
     kdePackages.ktorrent
     kdePackages.ktouch
     kdePackages.konqueror
-    kdePackages.keysmith
     kdePackages.kdenetwork-filesharing
     kdePackages.kwalletmanager
-    kdePackages.zanshin
-    kdePackages.itinerary
-    kdePackages.angelfish
-    kdePackages.plasmatube
     kdePackages.kgeography
     kdePackages.kwordquiz
     kdePackages.kanagram
@@ -272,8 +253,6 @@
     kdePackages.kig
     kdePackages.kalgebra
     kdePackages.kbruch
-    kdePackages.step
-    kdePackages.labplot
     kdePackages.marble
     kdePackages.kphotoalbum
   ];
