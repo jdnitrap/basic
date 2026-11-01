@@ -248,6 +248,16 @@
     kdePackages.phonon-vlc
     kdePackages.mpvqt
     kdePackages.kirigami-addons
+    kdePackages.kgpg
+    kdePackages.kget
+    kdePackages.sweeper
+    kdePackages.skanlite
+    kdePackages.skanpage
+    kdePackages.neochat
+    kdePackages.merkuro
+    kdePackages.tokodon
+    kdePackages.kdiff3
+    kdePackages.umbrello
   ];
 
   # Flatpak (user only)
