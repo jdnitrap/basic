@@ -71,8 +71,11 @@
     networkmanager-openvpn
   ];
   services.openssh.enable = false;
-  networking.firewall.enable = true;
-  networking.firewall.checkReversePath = false;
+
+  # Firewall (firewalld + Plasma panel)
+  networking.nftables.enable = true;
+  services.firewalld.enable = true;
+  networking.firewall.enable = false;
 
   # AdGuard Home
   services.adguardhome = {
@@ -195,6 +198,7 @@
     kdePackages.yakuake
     kdePackages.kfind
     kdePackages.isoimagewriter
+    kdePackages.plasma-firewall
   ];
 
   # Flatpak (user only)
