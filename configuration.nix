@@ -239,7 +239,6 @@
     kdePackages.sweeper
     kdePackages.skanlite
     kdePackages.skanpage
-    kdePackages.kdiff3
     kdePackages.umbrello
     kdePackages.ktorrent
     kdePackages.ktouch
