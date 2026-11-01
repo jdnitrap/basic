@@ -187,6 +187,11 @@
     freecad
     librecad
 
+    # Security
+    lynis
+    aide
+    firejail
+
     # KDE / Plasma applications
     kdePackages.dolphin
     kdePackages.dolphin-plugins
