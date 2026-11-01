@@ -24,7 +24,32 @@
     "slab_nomerge"
     "page_poison=1"
     "page_alloc.shuffle=1"
+    "debugfs=off"
+    "init_on_alloc=1"
+    "vsyscall=none"
+    "randomize_kstack_offset=on"
   ];
+  boot.blacklistedKernelModules = [
+    "ax25" "netrom" "rose"
+    "adfs" "affs" "bfs" "befs" "cramfs"
+    "efs" "erofs" "exofs" "freevxfs" "f2fs"
+    "hfs" "hpfs" "jfs" "minix" "nilfs2"
+    "ntfs" "omfs" "qnx4" "qnx6" "sysv" "ufs"
+  ];
+  boot.kernel.sysctl = {
+    "kernel.kptr_restrict" = 2;
+    "kernel.dmesg_restrict" = 1;
+    "kernel.yama.ptrace_scope" = 1;
+    "kernel.unprivileged_bpf_disabled" = 1;
+    "net.ipv4.conf.all.rp_filter" = 1;
+    "net.ipv4.conf.default.rp_filter" = 1;
+    "net.ipv4.icmp_echo_ignore_broadcasts" = 1;
+    "net.ipv4.tcp_syncookies" = 1;
+    "net.ipv4.conf.all.accept_redirects" = 0;
+    "net.ipv4.conf.default.accept_redirects" = 0;
+    "fs.protected_fifos" = 2;
+    "fs.protected_regular" = 2;
+  };
 
   # Locale and time
   i18n.defaultLocale = "en_US.UTF-8";
