@@ -167,7 +167,7 @@
     flatpak
     wireguard-tools
 
-    # KDE / Plasma applications (stable channel)
+    # KDE / Plasma applications
     kdePackages.dolphin
     kdePackages.dolphin-plugins
     kdePackages.kate
@@ -238,10 +238,6 @@
     kdePackages.kget
     kdePackages.sweeper
     kdePackages.skanlite
-    kdePackages.skanpage
-    kdePackages.umbrello
-    kdePackages.ktorrent
-    kdePackages.ktouch
     kdePackages.konqueror
     kdePackages.kdenetwork-filesharing
     kdePackages.kwalletmanager
@@ -253,7 +249,6 @@
     kdePackages.kalgebra
     kdePackages.kbruch
     kdePackages.marble
-    kdePackages.kphotoalbum
   ];
 
   # Flatpak
