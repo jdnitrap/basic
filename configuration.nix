@@ -150,9 +150,12 @@
     wireguard-tools
   ];
 
-  # Flatpak
+  # Flatpak (user only)
   services.flatpak.enable = true;
-  systemd.user.services.flatpak-repo = {
+
+  # Add Flathub for the logged-in user. No system remote.
+  systemd.user.services.flatpak-user-repo = {
+    description = "Add Flathub remote for user";
     wantedBy = [ "default.target" ];
     wants = [ "network-online.target" ];
     after = [ "network-online.target" ];
@@ -162,24 +165,8 @@
       flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     '';
   };
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (action.id == "org.freedesktop.Flatpak.app-update" ||
-          action.id == "org.freedesktop.Flatpak.runtime-update") {
-        return polkit.Result.YES;
-      }
-      if (action.id.indexOf("org.freedesktop.Flatpak.") == 0) {
-        if (subject.isInGroup("wheel")) {
-          return polkit.Result.AUTH_ADMIN_KEEP;
-        }
-        return polkit.Result.NO;
-      }
-      if (action.id == "org.freedesktop.accounts.user-administration" &&
-          subject.active && subject.local) {
-        return polkit.Result.YES;
-      }
-    });
-  '';
+
+  # Daily user Flatpak updates. No system updates.
   systemd.user.services.flatpak-user-update = {
     description = "Update user Flatpaks";
     after = [ "network-online.target" ];
@@ -196,6 +183,26 @@
       RandomizedDelaySec = "1h";
     };
   };
+
+  # Block system-wide Flatpak installs. User installs are allowed.
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (action.id.indexOf("org.freedesktop.Flatpak.") == 0) {
+        if (action.id == "org.freedesktop.Flatpak.app-update" ||
+            action.id == "org.freedesktop.Flatpak.runtime-update") {
+          return polkit.Result.YES;
+        }
+        if (subject.isInGroup("wheel")) {
+          return polkit.Result.AUTH_ADMIN_KEEP;
+        }
+        return polkit.Result.NO;
+      }
+      if (action.id == "org.freedesktop.accounts.user-administration" &&
+          subject.active && subject.local) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
 
   # Auto update
   system.autoUpgrade = {
