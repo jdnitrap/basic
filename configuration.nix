@@ -159,6 +159,9 @@
   };
   services.accounts-daemon.enable = true;
 
+  # Steam
+  programs.steam.enable = true;
+
   # Packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
@@ -166,6 +169,7 @@
     gh
     flatpak
     wireguard-tools
+    steam
 
     # KDE / Plasma applications
     kdePackages.dolphin
