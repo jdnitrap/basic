@@ -168,7 +168,6 @@
     git
     gh
     git-lfs
-    gitk
     flatpak
     wireguard-tools
     steam
@@ -188,13 +187,15 @@
     librecad
 
     # Security
-    lynis
-    aide
-    firejail
+    #lynis
+    #aide
+    #firejail
 
     # Proton
     proton-vpn
     proton-pass
+    proton-vpn-cli
+    protonmail-desktop
     proton-authenticator
 
     # KDE / Plasma applications
