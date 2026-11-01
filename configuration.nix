@@ -325,6 +325,10 @@
           subject.active && subject.local) {
         return polkit.Result.YES;
       }
+      if (action.id.indexOf("org.fedoraproject.FirewallD1.") == 0 &&
+          subject.isInGroup("wheel")) {
+        return polkit.Result.YES;
+      }
     });
   '';
 
