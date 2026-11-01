@@ -179,6 +179,7 @@
     gh
     flatpak
     wireguard-tools
+    kdePackages.discover
   ];
 
   # Flatpak (user only)
