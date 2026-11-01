@@ -167,6 +167,8 @@
   environment.systemPackages = with pkgs; [
     git
     gh
+    git-lfs
+    gitk
     flatpak
     wireguard-tools
     steam
