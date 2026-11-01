@@ -18,7 +18,7 @@ imports =
 	./sound.nix
 	./state-version.nix
 	./system-packages.nix
-	./gnome.nix
+	./plasma6.nix
 	./boot.nix
 	./networking.nix
 	./user-accounts.nix
@@ -33,5 +33,8 @@ imports =
     ];
 
   networking.hostName = "Asus";
+
+  # Plasma is the only session.
+  services.displayManager.defaultSession = "plasma";
 
 }
