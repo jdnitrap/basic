@@ -192,6 +192,11 @@
     aide
     firejail
 
+    # Proton
+    proton-vpn
+    proton-pass
+    proton-authenticator
+
     # KDE / Plasma applications
     kdePackages.dolphin
     kdePackages.dolphin-plugins
