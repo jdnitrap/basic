@@ -3,6 +3,10 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./hardware-configuration.nix
+  ];
+
   # Hostname
   networking.hostName = "Asus";
 
