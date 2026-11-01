@@ -13,11 +13,30 @@
   # Hardware support
   hardware.enableRedistributableFirmware = true;
   hardware.graphics.enable = true;
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # Boot
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 5;
+
+  # Plymouth splash (circuit theme)
+  boot.plymouth.enable = true;
+  boot.plymouth.theme = "circuit";
+  boot.plymouth.themePackages = [
+    (pkgs.adi1090x-plymouth-themes.override {
+      selected_themes = [ "circuit" ];
+    })
+  ];
+  boot.consoleLogLevel = 3;
+  boot.initrd.verbose = false;
+  boot.kernelParams = [
+    "quiet"
+    "splash"
+    "rd.systemd.show_status=auto"
+    "rd.udev.log_level=3"
+  ];
 
   # Locale and time
   i18n.defaultLocale = "en_US.UTF-8";
@@ -113,6 +132,18 @@
   networking.nameservers = [ "127.0.0.1" ];
   networking.networkmanager.dns = "none";
 
+  # AdGuard desktop entry
+  environment.etc."xdg/applications/adguard-home.desktop".text = ''
+    [Desktop Entry]
+    Name=AdGuard Home
+    Comment=Local DNS ad blocker dashboard
+    Exec=xdg-open http://127.0.0.1:3000
+    Icon=preferences-system-network
+    Terminal=false
+    Type=Application
+    Categories=Network;Security;
+  '';
+
   # Printing and scanning
   services.printing.enable = true;
   services.printing.browsing = true;
@@ -153,7 +184,6 @@
   # Flatpak (user only)
   services.flatpak.enable = true;
 
-  # Add Flathub for the logged-in user. No system remote.
   systemd.user.services.flatpak-user-repo = {
     description = "Add Flathub remote for user";
     wantedBy = [ "default.target" ];
@@ -166,7 +196,6 @@
     '';
   };
 
-  # Daily user Flatpak updates. No system updates.
   systemd.user.services.flatpak-user-update = {
     description = "Update user Flatpaks";
     after = [ "network-online.target" ];
@@ -184,7 +213,6 @@
     };
   };
 
-  # Block system-wide Flatpak installs. User installs are allowed.
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
       if (action.id.indexOf("org.freedesktop.Flatpak.") == 0) {
@@ -204,11 +232,11 @@
     });
   '';
 
-  # Auto update
+  # Auto update at 7 PM
   system.autoUpgrade = {
     enable = true;
     persistent = true;
-    dates = "15:00";
+    dates = "19:00";
     randomizedDelaySec = "0";
     allowReboot = false;
     flags = [
@@ -235,7 +263,7 @@
         user=$(id -nu "$uid" 2>/dev/null || true)
         [ -n "$user" ] || continue
         sudo -u "$user" DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$uid/bus" \
-          notify-send "NixOS update" "The 3 PM system update finished." || true
+          notify-send "NixOS update" "The 7 PM system update finished." || true
       done
     '';
   };
