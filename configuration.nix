@@ -167,7 +167,7 @@
     flatpak
     wireguard-tools
 
-    # KDE / Plasma applications (most are already pulled by plasma6.enable)
+    # KDE / Plasma applications
     kdePackages.dolphin
     kdePackages.dolphin-plugins
     kdePackages.kate
@@ -199,6 +199,55 @@
     kdePackages.kfind
     kdePackages.isoimagewriter
     kdePackages.plasma-firewall
+    kdePackages.falkon
+    kdePackages.kdeconnect-kde
+    kdePackages.k3b
+    kdePackages.juk
+    kdePackages.dragon
+    kdePackages.ghostwriter
+    kdePackages.kasts
+    kdePackages.audiotube
+    kdePackages.alligator
+    kdePackages.arianna
+    kdePackages.kamoso
+    kdePackages.calligra
+    kdePackages.kdevelop
+    kdePackages.kcachegrind
+    kdePackages.kcron
+    kdePackages.kdf
+    kdePackages.keepsecret
+    kdePackages.francis
+    kdePackages.kbackup
+    kdePackages.kalarm
+    kdePackages.kaddressbook
+    kdePackages.akregator
+    kdePackages.audex
+    kdePackages.kde-dev-utils
+    kdePackages.kde-dev-scripts
+    kdePackages.kdialog
+    kdePackages.krdp
+    kdePackages.plasma-vault
+    kdePackages.plasma-thunderbolt
+    kdePackages.plasma-disks
+    kdePackages.print-manager
+    kdePackages.kup
+    kdePackages.flatpak-kcm
+    kdePackages.kde-gtk-config
+    kdePackages.sddm-kcm
+    kdePackages.powerdevil
+    kdePackages.milou
+    kdePackages.ksshaskpass
+    kdePackages.kwallet-pam
+    kdePackages.drkonqi
+    kdePackages.plasma-welcome
+    kdePackages.glaxnimate
+    kdePackages.marknote
+    kdePackages.klevernotes
+    kdePackages.plasma-pass
+    kdePackages.kio-fuse
+    kdePackages.phonon-vlc
+    kdePackages.mpvqt
+    kdePackages.kirigami-addons
   ];
 
   # Flatpak (user only)
