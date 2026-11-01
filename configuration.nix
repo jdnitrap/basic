@@ -382,6 +382,11 @@
   security.apparmor.enable = true;
   security.apparmor.killUnconfinedConfinables = false;
 
+  # Kernel hardening
+  security.lockKernelModules = true;
+  security.protectKernelImage = true;
+  security.forcePageTableIsolation = true;
+
   # State version
   system.stateVersion = "26.05";
 }
