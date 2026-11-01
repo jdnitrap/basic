@@ -258,6 +258,29 @@
     kdePackages.tokodon
     kdePackages.kdiff3
     kdePackages.umbrello
+    kdePackages.ktorrent
+    kdePackages.ktouch
+    kdePackages.konqueror
+    kdePackages.keysmith
+    kdePackages.kdenetwork-filesharing
+    kdePackages.kwalletmanager
+    kdePackages.zanshin
+    kdePackages.itinerary
+    kdePackages.angelfish
+    kdePackages.plasmatube
+    kdePackages.kgeography
+    kdePackages.kwordquiz
+    kdePackages.kanagram
+    kdePackages.khangman
+    kdePackages.kig
+    kdePackages.kalgebra
+    kdePackages.kbruch
+    kdePackages.step
+    kdePackages.labplot
+    kdePackages.marble
+    kdePackages.kphotoalbum
+    kdePackages.digikam
+    kdePackages.krita
   ];
 
   # Flatpak (user only)
