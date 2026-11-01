@@ -416,7 +416,6 @@
   security.lockKernelModules = true;
   security.protectKernelImage = true;
   security.forcePageTableIsolation = true;
-  security.hideProcessInformation = true;
   systemd.coredump.enable = false;
 
   # State version
