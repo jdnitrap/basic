@@ -164,7 +164,7 @@
     flatpak
     wireguard-tools
 
-    # KDE / Plasma applications
+    # KDE / Plasma applications (most are already pulled by plasma6.enable)
     kdePackages.dolphin
     kdePackages.dolphin-plugins
     kdePackages.kate
@@ -187,6 +187,14 @@
     kdePackages.systemsettings
     kdePackages.khelpcenter
     kdePackages.plasma-browser-integration
+    kdePackages.kcharselect
+    kdePackages.kolourpaint
+    kdePackages.ksystemlog
+    kdePackages.kclock
+    kdePackages.kcolorchooser
+    kdePackages.yakuake
+    kdePackages.kfind
+    kdePackages.isoimagewriter
   ];
 
   # Flatpak (user only)
