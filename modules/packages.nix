@@ -17,7 +17,7 @@
     obsidian
 
     # Browsers
-    firefox
+    # firefox comes from programs.firefox so its DNS policy applies
     brave
 
     # Office
