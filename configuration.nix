@@ -270,7 +270,6 @@
         org.kde.krename \
         org.kde.qrca \
         org.kde.kalzium \
-        org.kde.kaffeine \
         org.kde.subtitlecomposer \
         org.kde.kid3 \
         org.kde.kstars \
