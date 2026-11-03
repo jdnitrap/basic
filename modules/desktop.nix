@@ -15,6 +15,8 @@
   services.displayManager.sddm.wayland.enable = true;
   services.displayManager.sddm.theme = "breeze";
   services.desktopManager.plasma6.enable = true;
+  # Plasma enables this by default. This machine does not use location lookup.
+  services.geoclue2.enable = false;
   services.displayManager.defaultSession = "plasma";
   services.gvfs.enable = true;
   xdg.portal = {

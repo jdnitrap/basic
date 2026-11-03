@@ -4,7 +4,6 @@
   hardware.enableRedistributableFirmware = true;
   hardware.graphics.enable = true;
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
 
   services.fstrim.enable = true;
   services.power-profiles-daemon.enable = true;
