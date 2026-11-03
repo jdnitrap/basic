@@ -32,6 +32,9 @@
     #aide
     #firejail
 
+    #Email
+    thunderbird
+
     # Proton
     proton-vpn
     proton-pass
@@ -70,7 +73,7 @@
     kdePackages.yakuake
     kdePackages.kfind
     kdePackages.isoimagewriter
-    kdePackages.falkon
+    #kdePackages.falkon
     kdePackages.k3b
     kdePackages.juk
     kdePackages.dragon
@@ -95,7 +98,6 @@
     kdePackages.kup
     kdePackages.flatpak-kcm
     kdePackages.kde-gtk-config
-    kdePackages.sddm-kcm
     kdePackages.powerdevil
     kdePackages.milou
     kdePackages.ksshaskpass
